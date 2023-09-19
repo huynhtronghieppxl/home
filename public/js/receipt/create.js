@@ -1,6 +1,7 @@
 let checkSaveCreate = 0;
 
 function openModalCreate() {
+    dateTimePickerDayMonthYear($("#time-create-receipt"));
     $('#modal-create-receipt').addClass('active');
 }
 

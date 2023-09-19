@@ -30,13 +30,14 @@ async function saveModalCreateAsset() {
             amount: removeformatNumber($('#amount-create-asset').val()),
             time: moment($('#time-create-asset').val(), 'DD/MM/YYYY').format('MM/DD/YYYY'),
             image: $('#image-create-asset').attr('data-src'),
+            is_reserve_fund: Number($('#check-create-asset').is(':checked'))
         };
     let res = await axiosTemplate(method, url, param, data);
     checkSaveCreateAsset = 0;
     switch (res.data.status) {
         case 200:
             SuccessNotify()
-            closeModalCreate();
+            closeModalCreateAsset();
             loadData();
             break;
         case 500:

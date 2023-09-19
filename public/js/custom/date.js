@@ -13,18 +13,13 @@ function dateTimePickerMonthYear(element) {
     });
 }
 
-function dateTimePickerDayMonYear(element) {
-    // let date_default = moment().format('MM/DD/YYYY');
-    let maxDate = new Date('2005-12-31')
+function dateTimePickerDayMonthYear(element) {
     element.datetimepicker({
-        defaultDate: maxDate,
         format: 'DD/MM/YYYY',
-        locale: 'vi',
         icons: {
             next: "icofont icofont-rounded-right",
             previous: "icofont icofont-rounded-left"
         },
-        maxDate:maxDate
     });
     element.on("dp.change", function (e) {
         if ($(this).val() === '') {

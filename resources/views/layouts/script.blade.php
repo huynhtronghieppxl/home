@@ -11,7 +11,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"
         defer="defer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js"></script>
-
+{{-- SWEETALERT --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {{-- DATATABLE --}}
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"
         defer="defer"></script>
@@ -33,5 +34,5 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
-<script src="{{asset('date/datetimepicker/bootstrap-datetimepicker.min.js')}}"></script>
-<script src="{{asset('date/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+{{--<script src="{{asset('date/datetimepicker/bootstrap-datetimepicker.min.js')}}"></script>--}}
+{{--<script src="{{asset('date/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>--}}

@@ -2,11 +2,13 @@
     <div class="popup">
         <div class="popup-meta">
             <div class="popup-head">
-                <h4>Thêm phiếu thu/chi</h4>
+                <h4>Sửa hạng mục thu/chi</h4>
             </div>
             <div class="Rpt-meta">
                 <form class="c-form">
                     <div class="p-0 m-0">
+                        <label>Loại</label>
+                        <div class="form-input-crm" id="type-update-addition-fee-type"></div>
                         <div class="form-input-crm">
                             <label>Tên</label>
                             <input id="name-update-addition-fee-type" class="text-left" value="" type="text"/>
@@ -14,7 +16,8 @@
                         </div>
                     </div>
                     <div class="pt-4 m-0">
-                        <button data-ripple="" type="button" class="main-btn" onclick="saveModalUpdateAdditionFeeType()">Lưu
+                        <button data-ripple="" type="button" class="main-btn"
+                                onclick="saveModalUpdateAdditionFeeType()">Lưu
                             lại
                         </button>
                         <a href="javascript:void(0)" onclick="closeModalUpdateAdditionFeeType()" data-ripple=""

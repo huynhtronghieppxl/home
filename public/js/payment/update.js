@@ -2,6 +2,7 @@ let checkSaveUpdate = 0, idUpdate;
 
 function openModalUpdate(r) {
     idUpdate = r.data('id');
+    dateTimePickerDayMonthYear($("#time-update-payment"));
     $('#description-update-payment').val(r.parents('tr').find('td:eq(4)').text());
     $('#type-update-payment').val(r.data('type')).trigger("chosen:updated");
     $('#amount-update-payment').val(r.parents('tr').find('td:eq(3)').text());

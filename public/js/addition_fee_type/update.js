@@ -1,7 +1,9 @@
 let checkSaveUpdateAdditionFeeType = 0, idUpdateAdditionFeeType;
 
-function openModalUpdateAdditionFeeType(id) {
-    idUpdateAdditionFeeType = id;
+function openModalUpdateAdditionFeeType(r) {
+    idUpdateAdditionFeeType = r.data('id');
+    $('#type-update-addition-fee-type').html(r.parents('tr').find('td:eq(2)').html());
+    $('#name-update-addition-fee-type').val(r.parents('tr').find('td:eq(1)').text());
     $('#modal-update-addition-fee-type').addClass('active');
 }
 
@@ -35,5 +37,5 @@ async function saveModalUpdateAdditionFeeType() {
 function closeModalUpdateAdditionFeeType() {
     $('#modal-update-addition-fee-type').removeClass('active');
     $('#name-update-addition-fee-type').val('');
-    $('#type-update-addition-fee-type').val('0').trigger('change');
+    $('#type-update-addition-fee-type').html('');
 }

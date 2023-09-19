@@ -4190,7 +4190,11 @@ form .dob .form-group {
 }
 
 .chosen-container {
-    width: 100% !important;
+    min-width: max-content;
+}
+
+.form-input-crm .chosen-container {
+    min-width: 100%;
 }
 
 form .dob .form-group:last-child {

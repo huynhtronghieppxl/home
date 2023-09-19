@@ -7,7 +7,7 @@
             <div class="Rpt-meta">
                 <form class="c-form">
                     <div class="row">
-                        <div class="col-lg-6 d-flex justify-content-center align-items-center pt-5">
+                        <div class="col-6 d-flex justify-content-center align-items-center pt-5">
                             <div class="change-photo-event text-center">
                                 <div
                                     class="profile-author-thumb  d-flex align-items-center justify-content-center position-relative pt-2">
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 d-flex justify-content-center align-items-center row">
+                        <div class="col-6 d-flex justify-content-center align-items-center row">
                             <div class="col-lg-12">
                                 <div class="form-input-crm">
                                     <label>Tên</label>
@@ -46,6 +46,13 @@
                                     <label>Ngày mua</label>
                                     <input type="text" id="time-create-asset" value="{{date('d/m/Y')}}" data-time="1"/>
                                     <p class="error-message-crm"></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked="checked" id="check-create-asset"><i class="check-box"></i>Sử dụng quỹ chi tiêu
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-lg-12">

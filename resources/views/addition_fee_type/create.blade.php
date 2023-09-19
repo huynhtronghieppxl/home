@@ -2,12 +2,12 @@
     <div class="popup">
         <div class="popup-meta">
             <div class="popup-head">
-                <h4>Thêm phiếu thu/chi</h4>
+                <h4>Thêm hạng mục thu/chi</h4>
             </div>
             <div class="Rpt-meta">
                 <form class="c-form">
                     <div class="p-0 m-0">
-                        <label>Loại phiếu</label>
+                        <label>Loại</label>
                         <div class="form-input-crm">
                             <select id="type-create-addition-fee-type" data-select="1">
                                 <option value="0" selected>Phiếu thu</option>

@@ -1,31 +1,44 @@
 @extends('layouts.layout')
 @section('content')
     <div class="crm-contain-wrapper">
-        <div class="card card-block pt-3">
-            <div class="table-responsive new-table">
-                <div class="select-filter-dataTable">
-                    <div class="select-by-month">
-                        <div class="time-filer-dataTale">
-                            <input class="by-month pb-1" type="text"
-                                   value="{{date('m/Y')}}" autocomplete="off" id="time-addition-fee"/>
+        <div class="info-section">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-box">
+                        <i class="fa fa-database text-primary"></i>
+                        <div class="anlytc-meta">
+                            <h4 id="in-amount">0</h4>
+                            <span>Tổng tích luỹ</span>
                         </div>
                     </div>
-                    <select id="select-type-addition-fee">
-                        <option value="-1">Tất cả</option>
-                        <option value="0">Phiếu thu</option>
-                        <option value="1">Phiếu chi</option>
-                    </select>
-                    <select id="select-addition-fee-type-addition-fee">
-                        <option value="-1">Tất cả</option>
-                    </select>
                 </div>
-                <table id="table-addition-fee" class="table">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-box">
+                        <i class="fa fa-sign-in text-danger"></i>
+                        <div class="anlytc-meta">
+                            <h4 id="out-amount">0</h4>
+                            <span>Đã dùng</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-box">
+                        <i class="fa fa-archive text-success"></i>
+                        <div class="anlytc-meta">
+                            <h4 id="current-amount">0</h4>
+                            <span>Hiện có</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-block pt-3">
+            <div class="table-responsive new-table">
+                <table id="table-reserve-fund" class="table">
                     <thead>
                     <tr>
                         <th>STT</th>
                         <th>Ngày</th>
-                        <th>Loại</th>
-                        <th>Hạng mục</th>
                         <th>Số tiền</th>
                         <th>Ghi chú</th>
                         <th></th>
@@ -35,10 +48,10 @@
             </div>
         </div>
     </div>
-    @include('addition_fee.create')
-    @include('addition_fee.update')
+    @include('reserve_fund.create')
+    @include('reserve_fund.update')
 @endsection
 @push('scripts')
     <script type="text/javascript"
-            src="{{ asset('js\addition_fee\index.js')}}"></script>
+            src="{{ asset('js\reserve_fund\index.js')}}"></script>
 @endpush

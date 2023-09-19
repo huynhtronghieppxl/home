@@ -58,19 +58,17 @@ class FundPeriodController extends Controller
                                 <button class="item crm-btn-data-table btn-warning mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Phân bổ" data-id="' . $row['id'] . '" onclick="openModalFundAllocation($(this))">
                                    <i class="fa fa-external-link-square"></i>
                                 </button>
-                                <button class="item crm-btn-data-table btn-success mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Chốt kỳ" data-id="' . $row['id'] . '" onclick="openModalUpdate($(this))">
+                                <button class="item crm-btn-data-table btn-success mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Chốt kỳ" data-id="' . $row['id'] . '" onclick="confirm($(this))">
                                    <i class="fa fa-check"></i>
-                                </button>
-                                <button class="item crm-btn-data-table btn-primary mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Chi tiết" onclick="openModalDetail(' . $row['id'] . ')">
-                                        <i class="fa fa-reorder"></i>
                                 </button>
                             </div>';
                     } else {
-                        return '<div class="table-data-feature">
-                                <button class="item crm-btn-data-table btn-primary mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Chi tiết" onclick="openModalDetail(' . $row['id'] . ')">
-                                        <i class="fa fa-reorder"></i>
-                                </button>
-                            </div>';
+                        return '';
+//                        return '<div class="table-data-feature">
+//                                <button class="item crm-btn-data-table btn-primary mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Chi tiết" onclick="openModalDetail(' . $row['id'] . ')">
+//                                        <i class="fa fa-reorder"></i>
+//                                </button>
+//                            </div>';
                     }
                 })
                 ->addIndexColumn()
@@ -114,22 +112,25 @@ class FundPeriodController extends Controller
         return $this->mapModelResponse(200, 'Success');
     }
 
-    public function endPeriod(Request $request)
+    public function confirm(Request $request)
     {
         $validated = Validator::make($request->all(), [
             'id' => 'required',
         ]);
         if (!$validated) return $this->mapModelResponse(400, $validated->errors());
 
-        $fundPeriod = json_decode(DB::table('fund_period')->where('id', $request->id)->get());
+        $fundPeriod = DB::table('fund_period')
+            ->where('id', $request->id)
+            ->where('status', 0)
+            ->first();
 
-        if (count($fundPeriod) === 0) return $this->mapModelResponse(400, 'Dữ liệu không hợp lệ !');
+        if (!$fundPeriod) return $this->mapModelResponse(400, 'Dữ liệu không hợp lệ !');
 
-        $amount = $fundPeriod['begin'] - $fundPeriod['payment'];
+        $amount = $fundPeriod->begin - $fundPeriod->payment;
 
         DB::table('fund_period')->where('id', $request->id)->update([
             'status' => 1,
-            'reserve_fund' => $fundPeriod['reserve_fund'] + $amount,
+            'reserve_fund' => $fundPeriod->reserve_fund + $amount,
         ]);
 
         DB::table('reserve_fund')->insert([

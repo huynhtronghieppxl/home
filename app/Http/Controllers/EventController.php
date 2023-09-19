@@ -11,4 +11,9 @@ class EventController extends Controller
         $title = 'Sự kiện';
         return view('event.index', compact('title'));
     }
+
+    public function data()
+    {
+       return [];
+    }
 }

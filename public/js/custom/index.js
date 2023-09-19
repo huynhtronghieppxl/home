@@ -438,13 +438,11 @@ function resetScroll() {
 }
 
 function openModalImageFullSize(r) {
-    $('#modal-popup-image-component').show();
-    $('#modal-popup-image-component').addClass('show');
+    $('#modal-popup-image-component').modal('show');
     $('#src-popup-image-component').attr('src', r.attr('src'));
 }
 
 function closeModalImageFullSize() {
-    $('#modal-popup-image-component').hide();
-    $('#modal-popup-image-component').removeClass('show');
+    $('#modal-popup-image-component').modal('hide');
 
 }

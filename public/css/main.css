@@ -2283,7 +2283,7 @@ span.badge {
 }
 
 #layout-event-crm .event-label-status-warning {
-  background: #ffc107;
+  background: #E96012;
   top: 15px;
   list-style: outside none none;
   margin: 0;
@@ -4499,7 +4499,7 @@ table.dataTable thead th {
   padding: 0.5rem 0.65rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #007bff;
+  color: #1462B0;
   background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 4px;

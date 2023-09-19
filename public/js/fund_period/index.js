@@ -1,4 +1,4 @@
-let checkSaveRemove = 0;
+let checkSaveConfirm = 0;
 
 $(function () {
     loadData();
@@ -35,25 +35,34 @@ async function dataTable(data) {
     DatatableTemplate(id, data, columns, heightScrollDatatable, fixed_left, fixed_right, option);
 }
 
-async function remove(id) {
-    if (checkSaveRemove === 1) return false;
-    checkSaveRemove = 1;
-    let method = "post",
-        url = "payment.remove",
-        params = null,
-        data = {id: id};
-    let res = await axiosTemplate(method, url, params, data, [$('body')]);
-    checkSaveRemove = 0;
-    switch (res.data.status) {
-        case 200:
-            SuccessNotify()
-            loadData();
-            break;
-        case 500:
-            ErrorNotify(res.data.message);
-            break;
-        default:
-            WarningNotify(res.data.message);
-            break;
-    }
+async function confirm(r) {
+    if (checkSaveConfirm === 1) return false;
+    let title = "Xác nhận chốt kỳ " + r.parents('tr').find('td:eq(1)').text() + ' ?',
+        text = "Số dư còn: " + r.parents('tr').find('td:eq(9)').text() + ' sẽ được chuyển vào quỹ chi tiêu !',
+        icon = "question";
+    sweetAlertComponent(title, text, icon).then(async (result) => {
+        if (result.value) {
+            checkSaveConfirm = 1;
+            let method = "post",
+                url = "fund-period.confirm",
+                params = null,
+                data = {
+                    id: r.data("id"),
+                };
+            let res = await axiosTemplate(method, url, params, data, [$("#body")]);
+            checkSaveConfirm = 0;
+            switch (res.data.status) {
+                case 200:
+                    SuccessNotify()
+                    loadData();
+                    break;
+                case 500:
+                    ErrorNotify(res.data.message);
+                    break;
+                default:
+                    WarningNotify(res.data.message);
+                    break;
+            }
+        }
+    });
 }

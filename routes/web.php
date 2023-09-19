@@ -18,7 +18,8 @@ Route::get('/login', function () {
 });
 
 Route::get('/', function () {
-    return view('index');
+    $title = 'Trang chủ';
+    return view('index', compact('title'));
 });
 
 /**
@@ -58,22 +59,25 @@ Route::post('payment.remove', ['as' => 'payment.remove', 'uses' => 'App\Http\Con
 Route::resource('fund-period', 'App\Http\Controllers\FundPeriodController');
 Route::get('fund-period.data', ['as' => 'fund-period.data', 'uses' => 'App\Http\Controllers\FundPeriodController@data']);
 Route::post('fund-period.fund-allocation', ['as' => 'fund-period.fund-allocation', 'uses' => 'App\Http\Controllers\FundPeriodController@fundAllocation']);
-Route::post('fund-period.end', ['as' => 'fund-period.end', 'uses' => 'App\Http\Controllers\FundPeriodController@endPeriod']);
+Route::post('fund-period.confirm', ['as' => 'fund-period.confirm', 'uses' => 'App\Http\Controllers\FundPeriodController@confirm']);
 
 /**
  * Event
  */
 Route::resource('event', 'App\Http\Controllers\EventController');
-//Route::get('addition-fee.data', ['as' => 'addition-fee.data', 'uses' => 'App\Http\Controllers\AdditionFeeController@data']);
-//Route::post('addition-fee.create', ['as' => 'addition-fee.create', 'uses' => 'App\Http\Controllers\AdditionFeeController@create']);
-//Route::post('addition-fee.update', ['as' => 'addition-fee.update', 'uses' => 'App\Http\Controllers\AdditionFeeController@update']);
-//Route::post('addition-fee.remove', ['as' => 'addition-fee.remove', 'uses' => 'App\Http\Controllers\AdditionFeeController@remove']);
+Route::get('event.data', ['as' => 'event.data', 'uses' => 'App\Http\Controllers\EventController@data']);
 /**
  * Tài sản
  */
 Route::resource('asset', 'App\Http\Controllers\AssetController');
 Route::get('asset.data', ['as' => 'asset.data', 'uses' => 'App\Http\Controllers\AssetController@data']);
 Route::post('asset.create', ['as' => 'asset.create', 'uses' => 'App\Http\Controllers\AssetController@create']);
+/**
+ * Ghi chú
+ */
+Route::resource('note', 'App\Http\Controllers\NoteController');
+Route::get('note.data', ['as' => 'note.data', 'uses' => 'App\Http\Controllers\NoteController@data']);
+Route::post('note.update', ['as' => 'note.update', 'uses' => 'App\Http\Controllers\NoteController@update']);
 
 /**
  * Đầu tư
@@ -81,19 +85,38 @@ Route::post('asset.create', ['as' => 'asset.create', 'uses' => 'App\Http\Control
 Route::resource('invest-fund', 'App\Http\Controllers\InvestFundController');
 Route::get('invest-fund.data', ['as' => 'invest-fund.data', 'uses' => 'App\Http\Controllers\InvestFundController@data']);
 Route::get('invest-fund.period', ['as' => 'invest-fund.period', 'uses' => 'App\Http\Controllers\InvestFundController@period']);
+Route::post('invest-fund.update', ['as' => 'invest-fund.update', 'uses' => 'App\Http\Controllers\InvestFundController@update']);
+Route::post('invest-fund.confirm', ['as' => 'invest-fund.confirm', 'uses' => 'App\Http\Controllers\InvestFundController@confirm']);
 
 /**
  * Tiêu dùng
  */
 Route::resource('reserve-fund', 'App\Http\Controllers\ReserveFundController');
-Route::get('invest-fund.data', ['as' => 'invest-fund.data', 'uses' => 'App\Http\Controllers\ReserveFundController@data']);
-Route::post('invest-fund.create', ['as' => 'invest-fund.create', 'uses' => 'App\Http\Controllers\ReserveFundController@create']);
-Route::post('invest-fund.update', ['as' => 'invest-fund.update', 'uses' => 'App\Http\Controllers\ReserveFundController@update']);
-Route::post('invest-fund.remove', ['as' => 'invest-fund.remove', 'uses' => 'App\Http\Controllers\ReserveFundController@remove']);
+Route::get('reserve-fund.data', ['as' => 'reserve-fund.data', 'uses' => 'App\Http\Controllers\ReserveFundController@data']);
+Route::post('reserve-fund.create', ['as' => 'reserve-fund.create', 'uses' => 'App\Http\Controllers\ReserveFundController@create']);
+Route::post('reserve-fund.update', ['as' => 'reserve-fund.update', 'uses' => 'App\Http\Controllers\ReserveFundController@update']);
+Route::post('reserve-fund.remove', ['as' => 'reserve-fund.remove', 'uses' => 'App\Http\Controllers\ReserveFundController@remove']);
 /**
- * Báo cáo
+ * Báo cáo doanh thu
  */
-Route::resource('report', 'App\Http\Controllers\ReportController');
+Route::resource('revenue-report', 'App\Http\Controllers\Report\RevenueController');
+Route::get('revenue-report.data', ['as' => 'revenue-report.data', 'uses' => 'App\Http\Controllers\Report\RevenueController@data']);
+Route::get('revenue-report.all', ['as' => 'revenue-report.all', 'uses' => 'App\Http\Controllers\Report\RevenueController@all']);
+/**
+ * Báo cáo chi phí
+ */
+Route::resource('cost-report', 'App\Http\Controllers\Report\CostController');
+Route::get('cost-report.data', ['as' => 'cost-report.data', 'uses' => 'App\Http\Controllers\Report\CostController@data']);
+Route::get('cost-report.all', ['as' => 'cost-report.all', 'uses' => 'App\Http\Controllers\Report\CostController@all']);
+
+/**
+ * Báo cáo tiêu dùng
+ */
+Route::resource('reserve-report', 'App\Http\Controllers\Report\ReserveController');
+/**
+ * Báo cáo đầu tư
+ */
+Route::resource('invest-report', 'App\Http\Controllers\Report\InvestController');
 /**
  * Thiết lập
  */

@@ -1,7 +1,10 @@
 let checkSaveRemove = 0;
 
 $(function () {
-    loadData()
+    loadData();
+    $('#type-addition-fee-type').on('change', function (){
+        loadData();
+    })
 })
 
 async function loadData() {

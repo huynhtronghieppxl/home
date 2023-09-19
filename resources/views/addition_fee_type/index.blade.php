@@ -4,7 +4,7 @@
         <div class="card card-block pt-3">
             <div class="table-responsive new-table">
                 <div class="select-filter-dataTable">
-                    <select id="select-status-employee-data">
+                    <select id="type-addition-fee-type">
                         <option value="-1">Tất cả</option>
                         <option value="0">Khoản thu</option>
                         <option value="1">Khoản chi</option>

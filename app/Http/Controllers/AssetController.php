@@ -43,6 +43,7 @@ class AssetController extends Controller
     public function create(Request $request)
     {
         $validated = Validator::make($request->all(), [
+            'name' => 'required|max:255',
             'description' => 'required|max:255',
             'image' => 'required',
             'amount' => 'required',
@@ -52,6 +53,7 @@ class AssetController extends Controller
         if (!$validated) return $this->mapModelResponse(400, $validated->errors());
 
         DB::table('asset')->insert([
+            'name' => $request->name,
             'description' => $request->description,
             'image' => $request->image,
             'amount' => $request->amount,

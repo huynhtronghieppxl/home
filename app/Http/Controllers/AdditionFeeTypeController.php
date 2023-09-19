@@ -18,7 +18,11 @@ class AdditionFeeTypeController extends Controller
 
     public function data(Request $request)
     {
-        $data = DB::table('addition_fee_type')->where('status', 1);
+        $data = DB::table('addition_fee_type')
+            ->where('status', 1);
+        if ($request->type !== '-1') {
+            $data->where('type', $request->type);
+        }
         try {
             $dataTable = DataTables::of(json_decode($data->get(), true))
                 ->addColumn('type', function ($row) {
@@ -30,7 +34,7 @@ class AdditionFeeTypeController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     return '<div class="table-data-feature">
-                               <button class="item crm-btn-data-table btn-warning mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Chỉnh sửa" onclick="openModalUpdateAdditionFeeType(' . $row['id'] . ')">
+                               <button class="item crm-btn-data-table btn-warning mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Chỉnh sửa" data-id=' . $row['id'] . ' onclick="openModalUpdateAdditionFeeType($(this))">
                                    <i class="fa fa-pencil"></i>
                               </button>
                                 <button class="item crm-btn-data-table btn-danger mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Xoá" onclick="remove(' . $row['id'] . ')">
@@ -87,7 +91,7 @@ class AdditionFeeTypeController extends Controller
         $validated = Validator::make($request->all(), [
             'id' => 'required',
         ]);
-        if (!$validated->fails()) return $this->mapModelResponse(400, $validated->errors());
+        if (!$validated) return $this->mapModelResponse(400, $validated->errors());
 
         $additionFeeType = DB::table('addition_fee_type')->where('id', $request->id)->count();
 

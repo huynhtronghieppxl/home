@@ -19,33 +19,37 @@
             </ul>
             <div class="tab-content mt-2">
                 <div class="tab-pane active" id="tab-1" role="tabpanel" aria-expanded="true">
-                    <table id="table-period" class="table">
-                        <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Tháng</th>
-                            <th>Tiền đầu kỳ</th>
-                            <th>Tiền trong kỳ</th>
-                            <th>Tổng nạp</th>
-                            <th>Số dư hiện tại</th>
-                            <th>Lợi nhuận</th>
-                            <th>Trạng thái</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                    </table>
+                    <div class="table-responsive new-table">
+                        <table id="table-period" class="table">
+                            <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tháng</th>
+                                <th>Tiền đầu kỳ</th>
+                                <th>Tiền trong kỳ</th>
+                                <th>Tổng nạp</th>
+                                <th>Số dư hiện tại</th>
+                                <th>Lợi nhuận</th>
+                                <th>Trạng thái</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
                 <div class="tab-pane" id="tab-2" role="tabpanel" aria-expanded="true">
-                    <table id="table-data" class="table">
-                        <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Ngày</th>
-                            <th>Số tiền</th>
-                            <th>Mô tả</th>
-                        </tr>
-                        </thead>
-                    </table>
+                    <div class="table-responsive new-table">
+                        <table id="table-data" class="table">
+                            <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Ngày</th>
+                                <th>Số tiền</th>
+                                <th>Mô tả</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

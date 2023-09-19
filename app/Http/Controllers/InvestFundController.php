@@ -12,10 +12,6 @@ class InvestFundController extends Controller
 {
     public function index()
     {
-        $a = [1,6,4,2,8,9,5,5,9,9];
-//        rsort($a);;
-        dd(array_unique($a));
-        dd(array_slice($a, 0, 5));
         $title = 'Đầu tư';
         return view('invest_fund.index', compact('title'));
     }
@@ -29,7 +25,7 @@ class InvestFundController extends Controller
                     return $this->numberFormat($row['amount']);
                 })
                 ->addColumn('time', function ($row) {
-                    return $this->formatDate($row['amount']);
+                    return $this->formatDate($row['time']);
                 })
                 ->addIndexColumn()
                 ->make(true);
@@ -61,7 +57,7 @@ class InvestFundController extends Controller
                     $profit = $row['real_amount'] - $total_in;
                     $rate_profit = number_format(($profit / $total_in) * 100, 2);
                     $class = ($rate_profit > 0) ? 'fa fa-arrow-up text-success' : 'fa fa-arrow-down text-danger';
-                    return '<div class="d-flex align-items-center justify-content-center">' . $profit . '
+                    return '<div class="d-flex align-items-center justify-content-center">' . $this->numberFormat($profit) . '
                                 <i class="fa fa-exclamation-triangle text-success pl-1 mb-1 ' . $class . '">' . $rate_profit . '</i>
                             </div>';
                 })
@@ -75,9 +71,12 @@ class InvestFundController extends Controller
                 ->addColumn('action', function ($row) {
                     if ($row['status'] === 0) {
                         return '<div class="table-data-feature">
-                                <button class="item crm-btn-data-table btn-success mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Chốt kỳ" data-id="' . $row['id'] . '" onclick="openModalUpdate($(this))">
-                                   <i class="fa fa-check"></i>
-                                </button>
+                                    <button class="item crm-btn-data-table btn-warning mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Cập nhật số tiền" data-id="' . $row['id'] . '" onclick="updateRealAmount($(this))">
+                                       <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button class="item crm-btn-data-table btn-success mb-1" data-toggle="tooltip" data-placement="top" data-original-title="Chốt kỳ" data-id="' . $row['id'] . '" onclick="confirm($(this))">
+                                       <i class="fa fa-check"></i>
+                                    </button>
                             </div>';
                     } else {
                         return '';
@@ -90,5 +89,50 @@ class InvestFundController extends Controller
         } catch (Exception $e) {
             return $this->catchTemplate($data, $e);
         }
+    }
+
+    public function update(Request $request)
+    {
+        $validated = Validator::make($request->all(), [
+            'id' => 'required',
+            'real_amount' => 'required',
+        ]);
+        if (!$validated) return $this->mapModelResponse(400, $validated->errors());
+
+        $fundPeriod = DB::table('invest_fund_period')
+            ->where('id', $request->id)
+            ->where('status', 0)
+            ->first();
+
+        if (!$fundPeriod) return $this->mapModelResponse(400, 'Dữ liệu không hợp lệ !');
+
+        DB::table('invest_fund_period')->where('id', $request->id)->update([
+            'real_amount' => $request->real_amount,
+        ]);
+
+        return $this->mapModelResponse(200, 'Success');
+    }
+
+    public function confirm(Request $request)
+    {
+        $validated = Validator::make($request->all(), [
+            'id' => 'required',
+            'real_amount' => 'required',
+        ]);
+        if (!$validated) return $this->mapModelResponse(400, $validated->errors());
+
+        $fundPeriod = DB::table('invest_fund_period')
+            ->where('id', $request->id)
+            ->where('status', 0)
+            ->first();
+
+        if (!$fundPeriod) return $this->mapModelResponse(400, 'Dữ liệu không hợp lệ !');
+
+        DB::table('invest_fund_period')->where('id', $request->id)->update([
+            'status' => 1,
+            'real_amount' => $request->real_amount,
+        ]);
+
+        return $this->mapModelResponse(200, 'Success');
     }
 }

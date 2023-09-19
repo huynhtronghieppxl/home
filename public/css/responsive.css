@@ -7,11 +7,11 @@
 }
 
 @media screen and (max-width: 1600px) and (min-width: 1400px) {
-    
+
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1281px)  {
-    
+
 	.page-name {
 	    padding-left: 15px;
 	    padding-right: 15px;
@@ -82,7 +82,7 @@
 		margin: 0 15px;
 	}
 	.profile-menu > li > a{font-size: 13px;}
-	
+
 	.profile-menu > li {
 		margin: 0 15px;
 	}
@@ -96,6 +96,7 @@
 		max-width: 130px;
 		min-width: 130px;
 		width: 130px;
+		height: 130px;
 	}
 	.profile-author {
 		margin-top: -145px;
@@ -449,8 +450,8 @@
 	footer .widget {
 	    margin-top: 40px;
 	}
-	footer .row > div:nth-child(1) .widget, 
-	footer .row > div:nth-child(2) .widget, 
+	footer .row > div:nth-child(1) .widget,
+	footer .row > div:nth-child(2) .widget,
 	footer .row > div:nth-child(3) .widget{
 		margin-top: 0;
 	}
@@ -562,7 +563,7 @@
 	}
 	.frnds-stories {
 	    display: flex;
-	
+
 	}
 	.frnds-stories > li {
 	    margin-bottom: 0;
@@ -678,7 +679,7 @@
 }
 .message-writing-box > form > .text-area{
 	width: 84.5%;
-}	
+}
 .chater-info > figure img{
 	max-width: 99px;
 }
@@ -724,7 +725,7 @@
 }
 	.overlap22{margin-top: 0;}
 
-    
+
 }
 
 @media screen and (max-width: 812px) {
@@ -742,7 +743,7 @@
 	    padding: 8px 18px;
 	}
 	.oth-opt {
-		margin-right: 12px; 
+		margin-right: 12px;
 		vertical-align: top;
 	    width: 38.8%;
 	}
@@ -876,12 +877,12 @@
 	footer .widget {
 	    margin-top: 40px;
 	}
-	footer .row > div:nth-child(1) .widget, 
-	footer .row > div:nth-child(2) .widget, 
+	footer .row > div:nth-child(1) .widget,
+	footer .row > div:nth-child(2) .widget,
 	footer .row > div:nth-child(3) .widget{
 		margin-top: 0;
 	}
-	.sidebar .widget ul.recent-photos li > a, 
+	.sidebar .widget ul.recent-photos li > a,
 	.sidebar .widget ul.recent-photos li > a img {
 	    display: inline-block;
 	    width: 100%;
@@ -968,8 +969,8 @@
 	    text-align: center;
 	    padding-left: 0;
 	}
-	
-	footer .row > div:nth-child(2) .widget, 
+
+	footer .row > div:nth-child(2) .widget,
 	footer .row > div:nth-child(3) .widget {
 	    margin-top: 40px;
 	}
@@ -983,7 +984,7 @@
 	    font-size: 38px;
 	    font-weight: 500;
 	}
-	.eror-robot{height: auto;}	
+	.eror-robot{height: auto;}
 	.eror-robot .error-page {
 	    padding-top: 0;
 	}
@@ -1204,7 +1205,7 @@
 		max-width: 33.3%;
 		width: 33.3%;
 	}
-	
+
 .pittop-meta > figure img {
     max-width: 70px;
 }
@@ -1248,8 +1249,8 @@
 .col-sm-6 .sidebar .friend-box {
     width: 100%;
 }
-.col-sm-6 .sidebar > .widget, 
-.col-sm-6 .sidebar > .advertisment-box, 
+.col-sm-6 .sidebar > .widget,
+.col-sm-6 .sidebar > .advertisment-box,
 .col-sm-6 .sidebar > div{
 	width: 100%;
 	margin-right: 0;
@@ -1350,9 +1351,9 @@
 }
 
 
-	
-	
-	
+
+
+
 
 }
 
@@ -1519,9 +1520,9 @@
 	    border-bottom: 6px solid #fa6342;
 	    border-left: 7px solid transparent;
 	    border-right: 7px solid transparent;
-	}    
+	}
 	.profile-menu{line-height: 40px;}
-	footer .row > div:nth-child(2) .widget, 
+	footer .row > div:nth-child(2) .widget,
 	footer .row > div:nth-child(3) .widget {
 	    margin-top: 40px;
 	}
@@ -1558,7 +1559,7 @@
 
 
 
-    
+
 }
 @media screen and (max-width: 568px) {
 	.row.merged20 > div {
@@ -1623,8 +1624,8 @@
 	.header-inner > h2{font-size: 26px;}
 	.post-meta.searched .detail {
 	    width: 66%;
-	} 
-	.quick-all-report > .row > div:nth-child(2) .quick-all, 
+	}
+	.quick-all-report > .row > div:nth-child(2) .quick-all,
 	.quick-all-report > .row > div:nth-child(3) .quick-all{
 		margin-top: 40px;
 	}
@@ -1695,7 +1696,7 @@
     border: 1px dashed #afafaf;
     line-height: 140px;
     margin-top: 0;
-   } 
+   }
 .heart-pnts > a {
     font-size: 12px;
     margin-right: 10px;
@@ -1831,7 +1832,7 @@
 
 
 @media screen and (max-width: 480px) {
-	.sidebar .widget ul.recent-photos li > a, 
+	.sidebar .widget ul.recent-photos li > a,
 	.sidebar .widget ul.recent-photos li > a img {
 	    display: inline-block;
 	    width: 100%;
@@ -2206,7 +2207,7 @@
 .prod-detail .full-postmeta .shopnow {
     margin-top: 20px;
 }
-	
+
 
 
 
@@ -2221,7 +2222,7 @@
 	    min-width: 80px;
 	    width: 80px;
 	}
-	
+
 	.user-profile .join-btn {
 	    font-size: 12px;
 	    left: auto;
@@ -2342,7 +2343,7 @@
 .loc-cate .cate{float: left; margin: 5px 0;}
 .post-meta .we-video-info > ul{
 	width: 100%;
-}	
+}
 .share-to-other > ul li{margin-right: 7px;}
 .job-detail > ul li span{width: 93%;}
 .apply-bttons {
@@ -2623,7 +2624,7 @@ a.addnewforum {
 }
 .sound-right > a.send-mesg{
 	margin: 0 10px;
-}	
+}
 .message-writing-box > form > .text-area {
     width: 79.5%;
 }
@@ -2757,8 +2758,8 @@ a.addnewforum {
 	.add-remove-frnd > li a > i {
 	    font-size: 13px;
 	}
-	.sidebar > .widget, 
-	.sidebar > .advertisment-box, 
+	.sidebar > .widget,
+	.sidebar > .advertisment-box,
 	.sidebar > div {
 	    width: 100%;
 	}

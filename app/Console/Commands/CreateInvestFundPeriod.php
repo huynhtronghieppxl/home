@@ -39,10 +39,18 @@ class CreateInvestFundPeriod extends Command
     public function handle()
     {
         $data = DB::table('invest_fund_period')->latest()->first();
-        DB::table('invest_fund_period')->insert([
-            'time' => date('m/Y'),
-            'begin' => $data->begin + $data->amount,
-            'real_amount' => $data->begin + $data->amount,
-        ]);
+        if (!$data) {
+            DB::table('invest_fund_period')->insert([
+                'time' => date('m/Y'),
+                'begin' => 0,
+                'real_amount' => 0,
+            ]);
+        } else {
+            DB::table('invest_fund_period')->insert([
+                'time' => date('m/Y'),
+                'begin' => $data->begin + $data->amount,
+                'real_amount' => $data->begin + $data->amount,
+            ]);
+        }
     }
 }

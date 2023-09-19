@@ -24,7 +24,7 @@ class PaymentController extends Controller
             ->leftJoin('addition_fee_type', 'addition_fee.addition_fee_type_id', '=', 'addition_fee_type.id')
             ->where('addition_fee_type.type', 1)
             ->orderBy('time', 'asc');
-        if ($request->type !== '0') {
+        if ($request->type !== '-1') {
             $data->where('addition_fee_type.id', $request->type);
         }
         try {

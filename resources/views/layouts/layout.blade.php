@@ -87,7 +87,7 @@
     </div><!-- topbar -->
 
     @yield('content')
-
+    @include('layouts.image')
 </div>
 @include('layouts.script')
 @stack('scripts')
