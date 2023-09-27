@@ -28,11 +28,12 @@ $(document).on('ready', function () {
         events: {
             url: 'event.data',
             type: 'get',
-            data: {
-                custom_param1: 'something',
-                custom_param2: 'somethingelse'
+            params: {
+                from: 'something',
+                to: 'somethingelse'
             },
-            error: function() {
+
+            error: function () {
                 alert('there was an error while fetching events!');
             },
             color: 'yellow',   // a non-ajax option
@@ -42,7 +43,7 @@ $(document).on('ready', function () {
 
 });
 
-function loadData(){
+function loadData() {
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
